@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  line-height: 1.75em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+h2 {
+  font-size: 2.2em;
+}
+h3 {
+  font-size: 1.8em;
+}
+h4 {
+  font-size: 1.6em;
+}
+h5 {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+h6 {
+  font-size: 1.3em;
+  font-style: italic;
+}
+
+p,
+ul,
+li,
+textarea,
+input,
+blockquote {
+  font-size: 1, 3em;
+}
