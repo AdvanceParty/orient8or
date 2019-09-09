@@ -31,8 +31,9 @@ const onControllerOrientation = data => {
   setMessage(beta, 'orientBeta');
   setMessage(gamma, 'orientGamma');
 
-  document.documentElement.style.setProperty('--yPos', -alpha);
-  document.documentElement.style.setProperty('--xPos', gamma);
+  document.documentElement.style.setProperty('--zRot', alpha);
+  document.documentElement.style.setProperty('--yRot', beta);
+  document.documentElement.style.setProperty('--xRot', gamma);
 };
 
 const setMessage = (msg, elName = 'msg') => {
