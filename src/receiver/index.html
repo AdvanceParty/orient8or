@@ -7,6 +7,30 @@
     <title>ORIENT-8-OR</title>
   </head>
   <body>
+    <p id="msgBox">Waiting For Controller.</p>
+    <ul data-acc>
+      <li>X: <span data-acc-x>0</span></li>
+      <li>Y: <span data-acc-y>0</span></li>
+      <li>Z: <span data-acc-z>0</span></li>
+    </ul>
+    <h4>Orientation</h4>
+    <ul>
+      <li>Alpha: <span data-orient-alpha>0</span></li>
+      <li>Beta: <span data-orient-beta>0</span></li>
+      <li>Gamma: <span data-orient-gamma>0</span></li>
+    </ul>
+    <p>Alpha: z-axis | Beta: front to back | Gamma: left to right</p>
+
+    <div class="scene">
+      <div class="cube">
+        <div class="cube__face cube__face--front">front</div>
+        <div class="cube__face cube__face--back">back</div>
+        <div class="cube__face cube__face--right">right</div>
+        <div class="cube__face cube__face--left">left</div>
+        <div class="cube__face cube__face--top">top</div>
+        <div class="cube__face cube__face--bottom">bottom</div>
+      </div>
+    </div>
     <script src="../js/shared.js"></script>
     <script src="../js/receiver.js"></script>
   </body>

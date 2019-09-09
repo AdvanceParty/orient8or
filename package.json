@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rm dist/*",
-    "start": "npm run parcel:watch",
-    "dist": "npm run clean && npm run parcel:build",
-    "parcel:watch": "parcel watch src/index.html src/controller/index.html src/receiver/index.html",
-    "parcel:build": "parcel build src/index.html src/controller/index.html src/receiver/index.html"
+    "clean": "rm -rf server/public/*",
+    "start": "npm dist && npm run serve",
+    "dev": "concurrently -k -c 'green,blue' -p '{time}--{name}' -t 'hh:mm:ss' npm:serve npm:watch ",
+    "serve": "node server/index.js",
+    "dist": "npm run clean && npm run build",
+    "watch": "parcel watch src/**/*.html -d server/public",
+    "build": "parcel build src/index.html src/controller/index.html src/receiver/index.html -d server/public --no-source-maps"
   },
   "keywords": [],
   "author": "Gil Fewster <gil@theroyals.com.au> (http://www.advanceparty.com)",
@@ -17,6 +19,7 @@
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "concurrently": "^4.1.2",
     "parcel-bundler": "^1.12.3"
   },
   "dependencies": {

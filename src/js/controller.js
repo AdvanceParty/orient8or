@@ -1,9 +1,12 @@
 import '../css/controller.css';
 
+const state = {};
+const io = require('socket.io-client');
+
 /* 
-  ToDo: Base isMoving on duration of time moving, nbot just acceleration at any given moment.
-  ToDo: Add delay before setting isMoving back to false
-  Think about: How can a device be placed into sleep mode when not moving?
+ToDo: Base isMoving on duration of time moving, nbot just acceleration at any given moment.
+ToDo: Add delay before setting isMoving back to false
+Think about: How can a device be placed into sleep mode when not moving?
 */
 
 const motionThreshold = 0.8;
@@ -30,9 +33,28 @@ const init = () => {
   }
 
   setMessage(`Motion and Orientation events are supported.`);
+  console.log('--- testing socket ---');
+
+  state.socket = io();
+  state.socket.on('connect', () => onConnect(state.socket));
 
   window.addEventListener('devicemotion', onDeviceMotion, true);
   window.addEventListener('deviceorientation', onDeviceOrientation, false);
+};
+
+const onConnect = socket => {
+  const socketId = socket.id;
+  state.socketId = socketId;
+  console.log(`Connected. Socket id: ${state.socketId}`);
+
+  // try to register as constroller
+  const isController = socket.emit('registerController', socketId);
+  console.log(`Client ${socketId} is controller? >> ${isController.data}`);
+
+  socket.on('orientation', data => {
+    console.log('ORIE');
+    setMessage('ORIENTATION');
+  });
 };
 
 const onDeviceMotion = e => {
@@ -44,8 +66,9 @@ const onDeviceMotion = e => {
   setMessage(z, 'accZ');
 
   const acc = Object.values(acceleration).map(axis => Math.abs(axis));
-  const moving = Boolean(acc.find(axis => axis >= motionThreshold));
-  accelerationContainer.className = moving ? 'moving' : '';
+  const isMoving = Boolean(acc.find(axis => axis >= motionThreshold));
+  accelerationContainer.className = isMoving ? 'moving' : '';
+  state.socket.emit('motionEvent', { isMoving });
 };
 
 const onDeviceOrientation = e => {
@@ -53,6 +76,7 @@ const onDeviceOrientation = e => {
   setMessage(alpha, 'orientAlpha');
   setMessage(beta, 'orientBeta');
   setMessage(gamma, 'orientGamma');
+  state.socket.emit('orientationEvent', { alpha, beta, gamma });
 };
 
 const exitWithUnsupportedDevice = () => {
