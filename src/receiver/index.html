@@ -7,28 +7,30 @@
     <title>ORIENT-8-OR</title>
   </head>
   <body>
+    <div id='hud'></div>
     <p id="msgBox">Waiting For Controller.</p>
-    <ul data-acc>
+    <!-- <ul data-acc>
       <li>X: <span data-acc-x>0</span></li>
       <li>Y: <span data-acc-y>0</span></li>
       <li>Z: <span data-acc-z>0</span></li>
-    </ul>
+    </ul> -->
     <h4>Orientation</h4>
     <ul>
       <li>Alpha: <span data-orient-alpha>0</span></li>
       <li>Beta: <span data-orient-beta>0</span></li>
       <li>Gamma: <span data-orient-gamma>0</span></li>
     </ul>
-    <p>Alpha: z-axis | Beta: front to back | Gamma: left to right</p>
+  </div>
+    <!-- <p>Alpha: z-axis | Beta: front to back | Gamma: left to right</p> -->
 
     <div class="scene">
       <div class="cube">
-        <div class="bottom">BOTTOM</div>
-        <div class="top">TOP</div>
-        <div class="right">right</div>
-        <div class="left">left</div>
-        <div class="back">BACK</div>
-        <div class="front">FRONT</div>
+        <div class="bottom"></div>
+        <div class="top"></div>
+        <div class="right"></div>
+        <div class="left"></div>
+        <div class="back"></div>
+        <div class="front"></div>
       </div>
     </div>
     <script src="../js/shared.js"></script>

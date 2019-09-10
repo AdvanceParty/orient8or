@@ -4,10 +4,23 @@
   --zRot: 0;
 }
 
+body {
+  background: #000;
+  color: #339900;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+/* #hud {
+  background-color: rgba(0, 255, 0, 0.2);
+  border: 1pxs solid rgba (0, 255, 0);
+  padding: 20px;
+} */
+
 .scene {
   margin: 80px auto;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   perspective: 600px;
 }
 
@@ -20,55 +33,56 @@
 
 .cube > div {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: #000;
+  background-image: url("../img/ap-logo.png");
   background-position: 50% 50%;
+  background-blend-mode: multiply;
 }
 
 /* TOP */
 .cube .top {
-  transform: rotateY(0deg) translateZ(100px);
-  background-image: url("../img/top.jpg");
+  transform: rotateY(0deg) translateZ(200px);
+  background-color: #ff6183;
 }
 
 /* Bottom */
 .cube .bottom {
-  transform: rotateY(180deg) translateZ(100px);
-  background-image: url("../img/bottom.jpg");
+  transform: rotateY(180deg) translateZ(200px);
+  background-color: #e9f024;
 }
 
 /* RIGHT  */
 .cube .right {
-  transform: rotateY(90deg) translateZ(100px);
-  background-image: url("../img/right.jpg");
+  transform: rotateY(90deg) translateZ(200px);
+  background-color: #60d1db;
 }
 
 /* LEFT */
 .cube .left {
-  transform: rotateY(-90deg) translateZ(100px);
-  background-image: url("../img/left.jpg");
+  transform: rotateY(-90deg) translateZ(200px);
+  background-color: #60d1db;
 }
 
 /* BACK */
 .cube .back {
-  transform: rotateX(90deg) translateZ(100px);
-  background-image: url("../img/back.jpg");
+  transform: rotateX(90deg) translateZ(200px);
+  background-color: #ffdd00;
 }
 
 /*  FRONT */
 .cube .front {
-  transform: rotateX(-90deg) translateZ(100px);
-  background-image: url("../img/front.jpg");
+  transform: rotateX(-90deg) translateZ(200px);
+  background-color: #ffdd00;
 }
 
 .cube {
-  transform: translateZ(-100px) rotateY(calc(var(--yRot) * 1deg)) rotateX(calc(var(--xRot) * 1deg))
+  transform: translateZ(-200px) rotateY(calc(var(--yRot) * 1deg)) rotateX(calc(var(--xRot) * 1deg))
     rotateZ(calc(var(--zRot) * 1deg));
 }
 
 .cube {
-  transition: transform 300ms;
+  transition: transform 100ms;
 }
