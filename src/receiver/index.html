@@ -7,20 +7,22 @@
     <title>ORIENT-8-OR</title>
   </head>
   <body>
-    <div id='hud'></div>
-    <p id="msgBox">Waiting For Controller.</p>
-    <!-- <ul data-acc>
-      <li>X: <span data-acc-x>0</span></li>
-      <li>Y: <span data-acc-y>0</span></li>
-      <li>Z: <span data-acc-z>0</span></li>
-    </ul> -->
-    <h4>Orientation</h4>
-    <ul>
-      <li>Alpha: <span data-orient-alpha>0</span></li>
-      <li>Beta: <span data-orient-beta>0</span></li>
-      <li>Gamma: <span data-orient-gamma>0</span></li>
-    </ul>
-  </div>
+    <div id="hud">
+      <section class="banner">
+        <p id="msgBox">Waiting For Controller.</p>
+      </section>
+      <section class="box">
+        <h4>Orientation</h4>
+        <ul>
+          <li>Alpha: <span data-orient-alpha>0</span></li>
+          <li>Beta: <span data-orient-beta>0</span></li>
+          <li>Gamma: <span data-orient-gamma>0</span></li>
+        </ul>
+      </section>
+      <section class="axes b">
+        <img src="../img/axes.png" alt="" />
+      </section>
+    </div>
     <!-- <p>Alpha: z-axis | Beta: front to back | Gamma: left to right</p> -->
 
     <div class="scene">
