@@ -10,7 +10,49 @@ body {
   font-family: monospace;
   font-size: 12px;
 }
-/* 
+
+#hud {
+  color: #339900;
+  background-color: rgba(0, 255, 0, 0.2);
+  border: 1pxs solid rgba (0, 255, 0);
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#hud .banner {
+  grid-column: 1/-1;
+}
+
+#hud .box,
+#hud .axes {
+  grid-column: span 2;
+}
+
+#hud .axes {
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+  background-color: #fff;
+}
+
+#hud .axes img {
+  width: 400%;
+  position: absolute;
+}
+#hud .axes.a img {
+  left: 0;
+}
+#hud .axes.b img {
+  left: -100%;
+}
+#hud .axes.c img {
+  left: -200%;
+}
+#hud .axes.d img {
+  left: -300%;
+}
+
 .scene {
   margin: 80px auto;
   width: 400px;
@@ -36,35 +78,6 @@ body {
   background-blend-mode: multiply;
 }
 
-.cube .top {
-  transform: rotateY(0deg) translateZ(200px);
-  background-color: #ff6183;
-}
-
-.cube .bottom {
-  transform: rotateY(180deg) translateZ(200px);
-  background-color: #e9f024;
-}
-
-.cube .right {
-  transform: rotateY(90deg) translateZ(200px);
-  background-color: #60d1db;
-}
-
-.cube .left {
-  transform: rotateY(-90deg) translateZ(200px);
-  background-color: #60d1db;
-}
-
-.cube .back {
-  transform: rotateX(90deg) translateZ(200px);
-  background-color: #ffdd00;
-}
-.cube .front {
-  transform: rotateX(-90deg) translateZ(200px);
-  background-color: #ffdd00;
-}
-
 .cube {
   transform: translateZ(-200px) rotateY(calc(var(--yRot) * 1deg)) rotateX(calc(var(--xRot) * 1deg))
     rotateZ(calc(var(--zRot) * 1deg));
@@ -72,4 +85,4 @@ body {
 
 .cube {
   transition: transform 100ms;
-} */
+}

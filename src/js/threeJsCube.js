@@ -1,8 +1,13 @@
 const THREE = require('three');
+<<<<<<< HEAD
+=======
+const txImage = require('../img/ap-logo.png');
+>>>>>>> master
 
 var camera, scene, renderer;
 var mesh;
 
+<<<<<<< HEAD
 const txImage = require('../img/ap-logo.png');
 
 init();
@@ -67,3 +72,8 @@ function animate() {
   // mesh.rotation.y += 0.01;
   // renderer.render(scene, camera);
 }
+=======
+
+init();
+animate();
+>>>>>>> master
