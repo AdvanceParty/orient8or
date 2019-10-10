@@ -10,8 +10,8 @@ Think about: How can a device be placed into sleep mode when not moving?
 */
 
 const motionThreshold = 0.8;
+const accelerationMaxDecimalPlaces = 1;
 const motionMinDurationMS = 500;
-
 const accelerationContainer = document.querySelectorAll('[data-acc]')[0];
 
 const txtEls = {
@@ -35,11 +35,32 @@ const init = () => {
   setMessage(`Motion and Orientation events are supported.`);
   console.log('--- testing socket ---');
 
+  document.querySelector('#requestAPIAccess').onclick = e => requestAPIPermissions();
+
   state.socket = io();
   state.socket.on('connect', () => onConnect(state.socket));
 
   window.addEventListener('devicemotion', onDeviceMotion, true);
   window.addEventListener('deviceorientation', onDeviceOrientation, false);
+};
+
+const requestAPIPermissions = () => {
+  console.log('ASK ME!');
+  DeviceMotionEvent.requestPermission()
+    .then(response => {
+      if (response == 'granted') {
+        window.addEventListener('devicemotion', onDeviceMotion, true);
+      }
+    })
+    .catch(console.error);
+
+  DeviceOrientationEvent.requestPermission()
+    .then(response => {
+      if (response == 'granted') {
+        window.addEventListener('deviceorientation', onDeviceOrientation, false);
+      }
+    })
+    .catch(console.error);
 };
 
 const onConnect = socket => {
@@ -57,9 +78,17 @@ const onConnect = socket => {
   });
 };
 
+const roundToXDecimalPlaces = (value, numberOfPlaces) => {
+  const factor = Math.pow(10, numberOfPlaces);
+  return Math.round(value * factor) / factor;
+};
+
 const onDeviceMotion = e => {
   const { acceleration } = e;
-  const { x, y, z } = acceleration;
+
+  const x = roundToXDecimalPlaces(acceleration.x, accelerationMaxDecimalPlaces);
+  const y = roundToXDecimalPlaces(acceleration.y, accelerationMaxDecimalPlaces);
+  const z = roundToXDecimalPlaces(acceleration.z, accelerationMaxDecimalPlaces);
 
   setMessage(x, 'accX');
   setMessage(y, 'accY');
@@ -73,9 +102,9 @@ const onDeviceMotion = e => {
 
 const onDeviceOrientation = e => {
   const { alpha, beta, gamma } = e;
-  setMessage(alpha, 'orientAlpha');
-  setMessage(beta, 'orientBeta');
-  setMessage(gamma, 'orientGamma');
+  setMessage(Math.round(alpha), 'orientAlpha');
+  setMessage(Math.round(beta), 'orientBeta');
+  setMessage(Math.round(gamma), 'orientGamma');
   state.socket.emit('orientationEvent', { alpha, beta, gamma });
 };
 

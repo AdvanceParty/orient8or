@@ -24,6 +24,8 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "metawear": "^0.3.0",
+    "noble": "^1.9.1",
     "normalize.css": "^8.0.1",
     "socket.io": "^2.2.0",
     "three": "^0.108.0"
